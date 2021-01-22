@@ -65,6 +65,16 @@ a temporary solution is change the variable ：
  I am trying a new solution which change window_size for lower cost of mem. 
  In prover.rs, b_g2_aux caculation size of <<G as CurveAffine>::Projective> is doubled,  so with same window_size and num_groups, mem needs increase fast.  
 
+ # TEAM WORK
+ Here is the wechat group. if anyone want to join team work of fil-optimization, feel free to scan the QR code with Wechat.
+- None ads.
+- None business and profit.
+- Only for tech discussion.
+- Contributors are welcome.
+
+
+<img src="https://github.com/jackoelv/bellperson/blob/2080Ti/img/QR.jpeg" width=300>
+
 # bellperson [![Crates.io](https://img.shields.io/crates/v/bellperson.svg)](https://crates.io/crates/bellperson)
 
 > This is a fork of the great [bellman](https://github.com/zkcrypto/bellman) library.
