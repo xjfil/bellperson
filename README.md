@@ -5,7 +5,11 @@
 - [FOO-Hacker]Jerry
 - [FOO-TEST]我是鱼饵
 - [FOO-C2]devid
+- [FOO]石头
 - [FOO]Waitting for you ...
+
+# Add 3080 Branch
+- to do...
 # Add 3090 Support
 - 500s+ when after all optimization, should be 400s+
 - the branch 3090 works now.
