@@ -421,9 +421,9 @@ where
 
     info!("ZQ: a_s start");
     let now = Instant::now();
-    
+    let mut fft_kern = Some(LockedFFTKernel::<E>::new(log_d, priority));
     let a_s = provers
-        .par_iter_mut()
+        .iter_mut()
         .map(|prover| {
             let mut a =
                 EvaluationDomain::from_coeffs(std::mem::replace(&mut prover.a, Vec::new()))?;
@@ -432,7 +432,6 @@ where
             let mut c =
                 EvaluationDomain::from_coeffs(std::mem::replace(&mut prover.c, Vec::new()))?;
 
-            let mut fft_kern = Some(LockedFFTKernel::<E>::new(log_d, priority));
             a.ifft(&worker, &mut fft_kern)?;
             a.coset_fft(&worker, &mut fft_kern)?;
             b.ifft(&worker, &mut fft_kern)?;
@@ -446,8 +445,6 @@ where
             drop(c);
             a.divide_by_z_on_coset(&worker);
             a.icoset_fft(&worker, &mut fft_kern)?;
-
-            drop(fft_kern);
             
             let mut a = a.into_coeffs();
             let a_len = a.len() - 1;
@@ -456,10 +453,9 @@ where
             Ok(Arc::new(a.into_par_iter().map(|s| s.0.into_repr()).collect::<Vec<_>>()))
         })
         .collect::<Result<Vec<_>, SynthesisError>>()?;
+    drop(fft_kern);
     info!("ZQ: a_s end: {:?}", now.elapsed());
     
-
-
     let mut multiexp_kern = Some(LockedMultiexpKernel::<E>::new(log_d, priority));
 
     info!("ZQ: h_s start");
