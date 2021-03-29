@@ -324,7 +324,7 @@ where
                                 if size_result > 144 {
                                     jack_chunk = (jack_chunk as f64 / 15f64).ceil() as usize;
                                     info!("GABEDEBUG: >144 size_result:{}, jack_chunk:{},", size_result,jack_chunk);
-                                }else size_result == 144{ //3090
+                                }else if size_result == 144 { //3090
                                     jack_chunk = (jack_chunk as f64 / 2.4f64).ceil() as usize;
                                     info!("GABEDEBUG: ==144 size_result:{}, jack_chunk:{},", size_result, jack_chunk);
                                 }else{
