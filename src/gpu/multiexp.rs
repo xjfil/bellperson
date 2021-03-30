@@ -328,9 +328,7 @@ where
 //                                    jack_chunk = (jack_chunk as f64 / 1.2f64).ceil() as usize;
 //                                    info!("GABEDEBUG: <144 size_result:{}, jack_chunk:{},", size_result,jack_chunk);
 //                                }
-                                jack_chunk = 45005397 as usize;
-                                info!("GABEDEBUG: <144 size_result:{}, jack_chunk:{},", size_result,jack_chunk);
-
+                                jack_chunk = 33445566 as usize;
                                 info!("GABEDEBUG: end size_result:{}, jack_chunk:{},", size_result,jack_chunk);
                                 for (bases, exps) in bases.chunks(jack_chunk).zip(exps.chunks(jack_chunk)) {
                                     let result = kern.multiexp(bases, exps, bases.len())?;
